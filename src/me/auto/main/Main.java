@@ -9,16 +9,15 @@ import me.auto.utils.MessageUtils;
 public class Main extends JavaPlugin{
 	
 	public static Plugin plugin;
-	static MessageUtils mu = MessageUtils.getInstance();
 
 	public void onEnable() {
 		plugin = this;
 		ConfigUtils.initializeConfigs();
-		mu.cheer(mu.getMessage("enabled"));
+		MessageUtils.cheer(MessageUtils.getMessage("enabled"));
 	}
 	
 	public void onDisable() {
-		mu.error(mu.getMessage("disabled"));
+		MessageUtils.error(MessageUtils.getMessage("disabled"));
 	}
 	
 }
