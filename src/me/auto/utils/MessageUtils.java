@@ -4,40 +4,44 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 
+import me.auto.main.Main;
+
 public class MessageUtils {
 	
-	static Plugin pl;
-	static Configuration cfg = new Configuration(pl.getDataFolder().getAbsolutePath(), "messages.yml");
+	static Plugin pl = Main.plugin;
 	
 	public static String getMessage(String s) {
-		String str = getPrefix() + cfg.getValue(s);
+		String str = getConfig().getValue(s);
 		return str;
 	}
 	
-	public void sendMessage(String s) {
+	public static void sendMessage(String s) {
 		Bukkit.getConsoleSender().sendMessage(s);
 	}
 	
 	public static void cheer(String s) {
-		if(s.contains(getPrefix())) s.replace(getPrefix(), "");
 		s = ChatColor.GREEN + s;
-		Bukkit.getConsoleSender().sendMessage(getPrefix() + " " + s);
+		sendMessage(getPrefix() + s);
 	}
 	
 	public static void warn(String s) {
-		if(s.contains(getPrefix())) s.replace(getPrefix(), "");
 		s = ChatColor.YELLOW + s;
-		Bukkit.getConsoleSender().sendMessage(getPrefix() + " " + s);
+		sendMessage(getPrefix() + s);
 	}
 	
 	public static void error(String s) {
-		if(s.contains(getPrefix())) s.replace(getPrefix(), "");
 		s = ChatColor.RED + s;
-		Bukkit.getConsoleSender().sendMessage(getPrefix() + " " + s);
+		sendMessage(getPrefix() + s);
 	}
-
+	
+	private static Configuration getConfig() {
+		Configuration cfg = new Configuration(pl.getDataFolder().getAbsolutePath(), "messages.yml");
+		return cfg;
+	}
+	
 	private static String getPrefix() {
-		String s = cfg.getValue("prefix");
+		String s = getConfig().getValue("prefix");
+		s = ChatColor.AQUA + s;
 		return s;
 	}
 	

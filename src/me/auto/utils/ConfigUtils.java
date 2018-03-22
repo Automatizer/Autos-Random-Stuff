@@ -5,11 +5,12 @@ import java.io.File;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
+import me.auto.main.Main;
 import net.md_5.bungee.api.ChatColor;
 
 public class ConfigUtils {
 	
-	static Plugin pl;
+	static Plugin pl = Main.plugin;
 
 	public static void initializeConfigs() {
 		
@@ -41,7 +42,7 @@ public class ConfigUtils {
 	
 	private static void generateDefaultMessages() {
 		Configuration cfg = new Configuration(pl.getDataFolder().getAbsolutePath(), "messages.yml");
-		cfg.convertAndWriteValue("prefix", "[Auto's Random Stuff]");
+		cfg.convertAndWriteValue("prefix", "[Auto's Random Stuff] ");
 		cfg.convertAndWriteValue("enabled", "Plugin successfully enabled.");
 		cfg.convertAndWriteValue("disabled", "Plugin successfully disabled.");
 	}
