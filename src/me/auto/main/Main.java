@@ -3,6 +3,8 @@ package me.auto.main;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import listeners.Interact;
+import listeners.InteractListener;
 import me.auto.utils.ConfigUtils;
 import me.auto.utils.MessageUtils;
 
@@ -16,6 +18,7 @@ public class Main extends JavaPlugin{
 		if(ConfigUtils.getConfig().getBoolean("regen-configs") == true) {
 			ConfigUtils.regenConfigs();
 		}
+		new InteractListener(this);
 		MessageUtils.cheer(MessageUtils.getMessage("enabled"));
 	}
 	
