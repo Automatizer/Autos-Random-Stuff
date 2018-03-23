@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
+import me.auto.abilities.AbilityManager;
 import me.auto.utils.CustomItem;
 
 public class InteractListener implements Listener{
@@ -25,7 +26,7 @@ public class InteractListener implements Listener{
 		if(is != null) {
 			if(CustomItem.doesItExist(is)) {
 				CustomItem i = CustomItem.getCorresponding(is);
-				
+				AbilityManager.parse(i, p);
 			}
 		}
 	}
