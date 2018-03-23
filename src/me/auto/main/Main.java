@@ -13,6 +13,9 @@ public class Main extends JavaPlugin{
 	public void onEnable() {
 		plugin = this;
 		ConfigUtils.initializeConfigs();
+		if(ConfigUtils.getConfig().getBoolean("regen-configs") == true) {
+			ConfigUtils.regenConfigs();
+		}
 		MessageUtils.cheer(MessageUtils.getMessage("enabled"));
 	}
 	

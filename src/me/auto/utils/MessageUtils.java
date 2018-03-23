@@ -2,6 +2,7 @@ package me.auto.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 import me.auto.main.Main;
@@ -15,23 +16,27 @@ public class MessageUtils {
 		return str;
 	}
 	
-	public static void sendMessage(String s) {
+	public void messagePlayer(Player p, String s) {
+		p.sendMessage(getPrefix() + s);
+	}
+	
+	public static void message(String s) {
 		Bukkit.getConsoleSender().sendMessage(s);
 	}
 	
 	public static void cheer(String s) {
 		s = ChatColor.GREEN + s;
-		sendMessage(getPrefix() + s);
+		message(getPrefix() + s);
 	}
 	
 	public static void warn(String s) {
 		s = ChatColor.YELLOW + s;
-		sendMessage(getPrefix() + s);
+		message(getPrefix() + s);
 	}
 	
 	public static void error(String s) {
 		s = ChatColor.RED + s;
-		sendMessage(getPrefix() + s);
+		message(getPrefix() + s);
 	}
 	
 	private static Configuration getConfig() {
