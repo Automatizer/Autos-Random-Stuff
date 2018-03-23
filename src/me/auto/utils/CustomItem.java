@@ -30,6 +30,13 @@ public enum CustomItem {
 		}
 	}
 	
+	public static CustomItem getItemFromID(int ID) {
+		for(CustomItem i : CustomItem.values()) {
+			if(i.getID() == ID) return i;
+			else return null;
+		}
+	}
+	
 	private ItemStack build() {
 		switch(getID()) {
 		case 1: return buildItem(Material.ENCHANTED_BOOK, "Alice's Grimoire", ChatColor.BLACK, lore("This tome seems to be emanating a lot of magical energy."));
