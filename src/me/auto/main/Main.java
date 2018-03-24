@@ -1,10 +1,9 @@
 package me.auto.main;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.auto.commands.ARS;
 import me.auto.listeners.InteractListener;
 import me.auto.utils.ConfigUtils;
 import me.auto.utils.MessageUtils;
@@ -20,17 +19,12 @@ public class Main extends JavaPlugin{
 			ConfigUtils.regenConfigs();
 		}
 		new InteractListener(this);
+		this.getCommand("ars").setExecutor(new ARS());
 		MessageUtils.cheer(MessageUtils.getMessage("enabled"));
 	}
 	
 	public void onDisable() {
 		MessageUtils.error(MessageUtils.getMessage("disabled"));
-	}
-	
-	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		
-		
-		return false;
 	}
 	
 }

@@ -3,3 +3,8 @@ author: Auto
 main: me.auto.main.Main
 description: Auto's Random Stuff
 version: 1.0
+depend: [SpigotLib]
+commands:
+    ars:
+        usage: /<command>
+        description: Main command for Auto's Random Stuff.

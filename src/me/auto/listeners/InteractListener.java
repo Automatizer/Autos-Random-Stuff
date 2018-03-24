@@ -24,7 +24,7 @@ public class InteractListener implements Listener{
 		Player p = e.getPlayer();
 		ItemStack is = p.getItemOnCursor();
 		if(is != null) {
-			if(CustomItem.doesItExist(is)) {
+			if(CustomItem.exists(is)) {
 				CustomItem i = CustomItem.getCorresponding(is);
 				AbilityManager.parse(i, p);
 			}

@@ -8,33 +8,46 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public enum CustomItem {
-	ALICE_GRIMOIRE(1),
+	ALICE_GRIMOIRE(1);
 	
-	private final int ID;
+	private int ID = 0;
 	CustomItem(int ID){
 		this.ID = ID;
 	}
 	
 	public int getID() { return ID; }
 	
-	public static boolean doesItExist(ItemStack is) {
+	public static boolean exists(ItemStack is) {
 		for(CustomItem i : CustomItem.values()) {
 			if(i.build().equals(is)) return true;
-			else return false;
 		}
+		return false;
+	}
+	
+	public static boolean exists(int i) {
+		for(CustomItem item : CustomItem.values()) {
+			if(item.getID() == i) return true;
+		}
+		return false;
 	}
 	
 	public static CustomItem getCorresponding(ItemStack is) {
 		for(CustomItem i : CustomItem.values()) {
 			if(i.build().equals(is)) return i;
 		}
+		return null;
 	}
 	
 	public static CustomItem getItemFromID(int ID) {
 		for(CustomItem i : CustomItem.values()) {
 			if(i.getID() == ID) return i;
-			else return null;
 		}
+		return null;
+	}
+	
+	public static ItemStack getItemStackFromID(int ID) {
+		CustomItem i = getItemFromID(ID);
+		return i.build();
 	}
 	
 	private ItemStack build() {
@@ -57,8 +70,11 @@ public enum CustomItem {
 	private static ArrayList<String> lore(String s) {
 		String[] lore = s.split(";");
 		ArrayList<String> list = new ArrayList<String>();
-		for(int i = 0; i < 10; i++) {
-			list.add(lore[i]);
-		}
+		if(lore.length > 1) {
+			for(int i = 0; i <= lore.length; i++) {
+				list.add(lore[i]);
+			}
+		}else { list.add(s); }
+		return list;
 	}
 }

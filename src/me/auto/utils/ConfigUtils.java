@@ -51,9 +51,13 @@ public class ConfigUtils {
 	
 	private static void generateDefaultMessages() {
 		Configuration cfg = new Configuration(pl.getDataFolder().getAbsolutePath(), "messages.yml");
-		cfg.convertAndWriteValue("prefix", "[Auto's Random Stuff] : ");
+		cfg.convertAndWriteValue("prefix", "[Auto's Random Stuff]: ");
 		cfg.convertAndWriteValue("enabled", "Plugin successfully enabled.");
 		cfg.convertAndWriteValue("disabled", "Plugin successfully disabled.");
+		cfg.convertAndWriteValue("cmd-too-many-args", "There was an error while running this command: too many arguments.");
+		cfg.convertAndWriteValue("cmd-give-invalid-id", "There was an error while running this command: invalid item ID.");
+		cfg.convertAndWriteValue("cmd-console-cannot-do-this", "Sorry, but the console cannot use this command.");
+		cfg.convertAndWriteValue("cmd-not-enough-args", "There was an error while running this command: not enough arguments.");
 	}
 	
 }

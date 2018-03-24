@@ -16,10 +16,6 @@ public class MessageUtils {
 		return str;
 	}
 	
-	public void messagePlayer(Player p, String s) {
-		p.sendMessage(getPrefix() + s);
-	}
-	
 	public static void message(String s) {
 		Bukkit.getConsoleSender().sendMessage(s);
 	}
@@ -37,6 +33,25 @@ public class MessageUtils {
 	public static void error(String s) {
 		s = ChatColor.RED + s;
 		message(getPrefix() + s);
+	}
+	
+	public static void messagePlayer(Player p, String s) {
+		p.sendMessage(s);
+	}
+	
+	public static void cheerPlayer(Player p, String s) {
+		s = ChatColor.GREEN + s;
+		messagePlayer(p, getPrefix() + s);
+	}
+	
+	public static void warnPlayer(Player p, String s) {
+		s = ChatColor.YELLOW + s;
+		messagePlayer(p, getPrefix() + s);
+	}
+	
+	public static void errorPlayer(Player p, String s) {
+		s = ChatColor.RED + s;
+		messagePlayer(p, getPrefix() + s);
 	}
 	
 	private static Configuration getConfig() {
