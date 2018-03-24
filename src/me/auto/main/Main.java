@@ -1,5 +1,7 @@
 package me.auto.main;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,6 +25,12 @@ public class Main extends JavaPlugin{
 	
 	public void onDisable() {
 		MessageUtils.error(MessageUtils.getMessage("disabled"));
+	}
+	
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		
+		
+		return false;
 	}
 	
 }
